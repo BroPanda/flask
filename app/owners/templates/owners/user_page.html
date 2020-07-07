@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    OWNER | Page
+{% endblock %}
+
+{% block body %}
+
+    add pets for user?
+
+    <form action="{{ url_for('owners.user_page', name=user['name']) }}" method='POST'>
+        {% for input in form %}
+            {{ input.label }} {{ input }}
+        {% endfor %}
+        <button type="submit">- send -</button>
+    </form>
+
+    <br>
+
+    <div>
+        name = {{ user['name'] }} | age = {{ user['age'] }} | city = {{ user['city'] }}
+    </div>
+    <div>
+        user pet(s) = {{ user['pets'] }}
+    </div>
+
+{% endblock %}

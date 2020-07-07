@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    new post | page
+{% endblock %}
+
+{% block body %}
+
+    <div>
+        name = {{ name }}
+    </div>
+    <div>
+        mail = {{ mail }}
+    </div>
+    <form action="{{ url_for('posts.new_page') }}" method="POST">
+
+        {% for input in form %}
+            <div>
+                {{ input }} {{ input.label }}
+            </div>
+        {% endfor %}
+        <button type="submit">send</button>
+    </form>
+
+{% endblock %}

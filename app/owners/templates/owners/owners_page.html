@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Owners | Page
+{% endblock %}
+
+{% block body %}
+
+    <h1>OWNERS PAGE</h1>
+    <br>
+    <h2>Add Owner</h2>
+    <form action="{{ url_for('owners.owners_page') }}" method="POST">
+        {% for foo in form %}
+            {{ foo.label }} {{ foo }}
+        {% endfor %}
+        <button type="submit">- send -</button>
+
+    </form>
+    <br>
+    <h2>Owners List:</h2>
+
+    {% for owner in owners %}
+        <div>
+            <div><a href={{ url_for('owners.user_page',name = owner['name'] )}}> name: {{ owner['name'] }}</a></div>
+            <div>age: {{ owner['age'] }}</div>
+            <div>city: {{ owner['city'] }}</div>
+        </div>
+        <br>
+    {% endfor %}
+{% endblock %}
