@@ -21,7 +21,12 @@
         name = {{ user['name'] }} | age = {{ user['age'] }} | city = {{ user['city'] }}
     </div>
     <div>
-        user pet(s) = {{ user['pets'] }}
+        user pet(s) = {% for pet in user['pets'] %}
+            <div>
+            {{ pet }}
+            </div>
+        {% endfor %}
+
     </div>
 
 {% endblock %}
