@@ -2,3 +2,7 @@ body {
     background: darkgray;
     margin: 0px 10px;
 }
+
+body a{
+    color: midnightblue;
+}
