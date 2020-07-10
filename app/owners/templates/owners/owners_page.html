@@ -11,9 +11,21 @@
     <h2>Add Owner</h2>
     <form action="{{ url_for('owners.owners_page') }}" method="POST">
         {% for foo in form %}
-            {{ foo.label }} {{ foo }}
+
+            {% if  foo != form.save %}
+                {{ foo.label }}
+            {% endif %}
+
+            {% if foo != form.city_owm and foo != form.save %}
+                <span style="color: red"> * </span>
+            {% endif %}
+
+            {{ foo }}
+
+            {% if foo.errors %}
+                {{ foo.errors[0] }}
+            {% endif %}
         {% endfor %}
-        <button type="submit">- send -</button>
 
     </form>
     <br>
@@ -21,7 +33,7 @@
 
     {% for owner in owners %}
         <div>
-            <div><a href={{ url_for('owners.user_page',name = owner['name'] )}}> name: {{ owner['name'] }}</a></div>
+            <div><a href={{ url_for('owners.user_page',name = owner['name'] ) }}> name: {{ owner['name'] }}</a></div>
             <div>age: {{ owner['age'] }}</div>
             <div>city: {{ owner['city'] }}</div>
         </div>

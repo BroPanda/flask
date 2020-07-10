@@ -1,9 +1,4 @@
-# db = [
-#     {"name": vas,
-#      age: 11,
-#      city: 'lviv',
-#      pets:
-#          [
-#              {} {} {}]}
-# ]
 db = []
+db_pets = []
+db_cats = []
+db_dogs = []
