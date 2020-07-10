@@ -1,5 +1,8 @@
 class Config(object):
     DEBUG = True
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+    SQLALCHEMY_DATABASE_URI = 'mysql+mysqlconnector://root:0085@localhost/flask'
+
 
 class DevConfig(Config):
     DEBUG = True

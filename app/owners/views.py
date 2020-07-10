@@ -2,13 +2,15 @@ from flask import Blueprint, render_template, request
 
 from app.owners.forms import Owener, Add_Pet
 
-from app.dataFile import db
+from app import db
 
 owners = Blueprint('owners', __name__, template_folder='templates', static_folder='static')
 
+from .models import OwnersModel
 
 @owners.route('/', methods=['POST', 'GET'])
 def owners_page():
+    db.create_all()
     form = Owener()
     name = ''
     age = ''
