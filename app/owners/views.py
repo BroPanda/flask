@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request
 
 from app.owners.forms import Owener, Add_Pet
-
+from app.dataFile import dbf
 from app import db
 
 owners = Blueprint('owners', __name__, template_folder='templates', static_folder='static')
@@ -16,15 +16,15 @@ def owners_page():
         name = request.form['name_own']
         age = request.form['age_own']
         city = request.form['city_owm']
-        db.append({'name': name, 'age': age, 'city': city, 'pets': []})
-    return render_template('owners/owners_page.html', owners=db, form=form)
+        dbf.append({'name': name, 'age': age, 'city': city, 'pets': []})
+    return render_template('owners/owners_page.html', owners=dbf, form=form)
 
 
 @owners.route('/<name>', methods=['POST', 'GET'])
 def user_page(name):
     form = Add_Pet()
     user = None
-    for owner in db:
+    for owner in dbf:
         if owner['name'] == name:
             user = owner
     if request.method == 'POST':
