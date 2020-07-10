@@ -6,6 +6,7 @@ from app import db
 
 owners = Blueprint('owners', __name__, template_folder='templates', static_folder='static')
 
+from .models import OwnersModel
 
 @owners.route('/', methods=['POST', 'GET'])
 def owners_page():
