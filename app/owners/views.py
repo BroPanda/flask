@@ -1,7 +1,6 @@
 from flask import Blueprint, render_template, request, redirect, url_for
 
 from app.owners.forms import Owener, Add_Pet
-from app.dataFile import dbf
 from app import db
 
 owners = Blueprint('owners', __name__, template_folder='templates', static_folder='static')
@@ -56,6 +55,7 @@ def add_pet_page(ownerID):
 def delete_owner(id):
     db.session.delete(OwnerModel.query.get(id))
     db.session.commit()
+    print('1')
     return redirect(url_for('owners.owners_page'))
 
 
