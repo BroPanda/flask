@@ -33,9 +33,14 @@
 
     {% for owner in owners %}
         <div>
-            <div><a href={{ url_for('owners.user_page',name = owner['name'] ) }}> name: {{ owner['name'] }}</a></div>
+            <div>Owner ID - {{ owner['id'] }}</div>
+            <div><a href={{ url_for('owners.user_page',userID = owner['id'] ) }}> name: {{ owner['name'] }}</a></div>
             <div>age: {{ owner['age'] }}</div>
             <div>city: {{ owner['city'] }}</div>
+
+            <div><button class="btn" style="background: red">
+                <a href="{{ url_for('owners.delete_owner', id = owner['id']) }}">X</a>
+            </button></div>
         </div>
         <br>
     {% endfor %}
