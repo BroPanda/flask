@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    add pet page
+{% endblock %}
+
+{% block body %}
+    <h1>ADD PET</h1>
+    <div>Add page by {{ user.name }}</div>
+
+    <h1></h1>
+
+
+    <form method="POST">
+        {% for input in form %}
+            <div>
+                {% if  input != form.save %}
+                    {{ input.label }}
+                {% endif %}
+                {{ input }}
+            </div>
+        {% endfor %}
+    </form>
+
+    {% for pet in pets %}
+        <div>
+            <br>
+            <div> pet name - {{ pet.name }}</div>
+            <div>pet age - {{ pet.age }}</div>
+            <div>pet type - {{ pet.type_pet }}</div>
+            <div>date of create - {{ pet.date }}</div>
+            <div>owner id - {{ pet.ownerID }}</div>
+
+            <a href="{{ url_for('owners.delete_pet', id_pet = pet.id,id_user=pet.ownerID) }}">
+                <button>delete {{ pet.name }}</button>
+            </a>
+            <br>
+        </div>
+    {% endfor %}
+
+
+
+{% endblock %}
