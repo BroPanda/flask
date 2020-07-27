@@ -22,16 +22,16 @@
         {% endfor %}
     </form>
 
-    {% for pet in pets %}
+    {% for pet in user.pets %}
         <div>
             <br>
+            <div>pet id -  {{ pet.id }}</div>
             <div> pet name - {{ pet.name }}</div>
             <div>pet age - {{ pet.age }}</div>
             <div>pet type - {{ pet.type_pet }}</div>
             <div>date of create - {{ pet.date }}</div>
-            <div>owner id - {{ pet.ownerID }}</div>
 
-            <a href="{{ url_for('owners.delete_pet', id_pet = pet.id,id_user=pet.ownerID) }}">
+            <a href="{{ url_for('owners.delete_pet', id_pet = pet.id, owner_id = user.id) }}">
                 <button>delete {{ pet.name }}</button>
             </a>
             <br>
